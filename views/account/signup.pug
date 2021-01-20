@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .pb-2.mt-2.mb-4.border-bottom
+    h3 #{t("signup.heading")}
+  form(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group.row
+      label.col-md-3.col-form-label.font-weight-bold.text-right(for='email') Email
+      .col-md-7
+        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
+    .form-group.row
+      label.col-md-3.col-form-label.font-weight-bold.text-right(for='password') #{t("signup.password")}
+      .col-md-7
+        input.form-control(type='password', name='password', id='password', placeholder=t("signup.password"), autocomplete='new-password', required)
+    .form-group.row
+      label.col-md-3.col-form-label.font-weight-bold.text-right(for='confirmPassword') #{t("signup.confirmPassword")}
+      .col-md-7
+        input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder=t("signup.confirmPassword"), autocomplete='new-password', required)
+    .form-group.offset-sm-3.col-md-7.pl-2
+      button.btn.btn-success(type='submit')
+        i.fas.fa-user-plus.fa-sm
+        | #{t("signup.register")}

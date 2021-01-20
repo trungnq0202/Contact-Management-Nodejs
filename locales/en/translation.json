@@ -1,0 +1,150 @@
+{
+    "home":{
+        "mainTitle":"Basic Web Starter - NodeJs",
+        "intro": "The powerful thing about Pug is inline JavaScript code. This is where dynamic data comes from. Binding this dynamic data to HTML can be tricky using custom approach, but with Pug, it’s kind of no brainier.",
+        "greetings": "Hello World! I am ",
+        "male_statement": "I am male.",
+        "female_statement": "I am female.",
+        "special_statement": "I am special.",
+        "someLink": "Some Link",
+        "currentVal1": "current value is",
+        "currentVal2": "current value using while is",
+        "currentVal3": "current value using for-in is",
+        "currentVal4": "current value using each-in is",
+        "nameStatement": "Hi, My name is",
+        "heading": "Heading",
+        "viewDetails": "View details"
+    },
+
+    "header":{
+        "brand": "My Web Application",
+        "home": "Home",
+        "contact": "Contact",
+        "contactManagement": "Contact Management",
+        "login": "Login",
+        "createAccount": "Create Account",
+        "myAccount": "My Account",
+        "logout": "Logout"
+    },
+
+    "signin":{
+        "heading": "Sign in",
+        "password": "Password",
+        "login": "Login",
+        "forgotPassword": "Forgot your password?"
+    },
+
+    "signup":{
+        "heading": "Sign up",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "register": "Signup",
+        "forgotPassword": "Forgot your password?"
+    },
+
+    "profile":{
+        "heading": "Profile Information",
+        "name": "Name",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "location": "Location",
+        "updateProfile": "Update Profile",
+        "changePassword": "Change Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password",
+        "deleteAccount": "Delete Account",
+        "deleteMyAccount": "Delete my account",
+        "website": "Website",
+        "warningMessage": "You can delete your account, but keep in mind this action is irreversible."
+    },
+
+    "contactPage":{
+        "heading": "Contact Form",
+        "description": "Please describe the issue of your suggestion",
+        "send": "Send"
+    },
+
+    "contactList":{
+        "heading": "Contact List",
+        "exportContacts": "Export Contacts",
+        "importContacts": "Import Contacts",
+        "deleteMultipleContacts": "Delete multiple contacts",
+        "filterContacts": "Filter Contacts",
+        "addContact": "Add new contact",
+        "fullName": "Fullname",
+        "directManager": "DirectManager",
+        "dob": "DoB",
+        "gender": "Gender",
+        "startDate": "startDate",
+        "action": "Action",
+
+        "confirmation": "Confirmation",
+        "confirmationMessage": "Are you sure you want to delete this contact?",
+        "confirmationMessageMultiple":"Are you sure you want to delete these contacts?",
+        "cancel": "Cancel",
+        "delete": "Delete",
+
+        "filter": "Filter",
+        "instruction": "Please fill in the filter conditions",
+        "fullNameSearch": "Search by fullname...",
+        "dobFrom": "Date of Birth (from date)",
+        "dobTo": "Date of Birth (to date)",
+        
+        "uploadHeading": "Upload contact list",
+        "selectFile": "Select file",
+        "upload": "Upload",
+        "none": "None",
+        "male":"Male",
+        "female":"Female",
+        "other":"Other"
+
+
+    },
+
+    "contactAdd":{
+        "heading1": "Contacts",
+        "heading2": "create",
+        "firstName": "First name",
+        "middleName": "Middle name",
+        "lastName": "Last name",
+        "directManager": "Direct Manager",
+        "none": "None",
+        "dob": "Date of Birth",
+        "gender": "Gender",
+        "male":"Male",
+        "female":"Female",
+        "other":"Other",
+        "startDate":"Start Date",
+        "create":"Create"
+    },
+
+    "contactEdit":{
+        "heading1": "Contacts",
+        "heading2": "edit",
+        "firstName": "First name",
+        "middleName": "Middle name",
+        "lastName": "Last name",
+        "directManager": "Direct Manager",
+        "none": "None",
+        "dob": "Date of Birth",
+        "gender": "Gender",
+        "male":"Male",
+        "female":"Female",
+        "other":"Other",
+        "startDate":"Start Date",
+        "update":"Update"
+    },
+
+    "error404":{
+        "error": "Page Not Found"
+    },
+
+    "error403":{
+        "error": "Access denined"
+    }
+
+
+
+}

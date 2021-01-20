@@ -1,0 +1,148 @@
+{
+    "home":{
+        "mainTitle":"Khởi đầu web cơ bản - NodeJs",
+        "intro": "Thứ mạnh mẽ nhất của Pug là viết được Javascript ngay trên dòng. Đây là nơi dữ liệu động được tạo ra. Kết nối dữ liệu động này với HTML có thể sẽ khó khăn khi sử dụng phương pháp tự tạo, nhưng với Pug, điều này trở nên rất dễ dàng.",
+        "greetings": "Xin chào thế giới! Tôi là ",
+        "male_statement": "Tôi là nam.",
+        "female_statement": "Tôi là nữ.",
+        "special_statement": "Tôi đặc biệt.",
+        "someLink": "Một Link nào đó",
+        "currentVal1": "giá trị hiện tại là",
+        "currentVal2": "giá trị hiện tại là sử dụng while là",
+        "currentVal3": "giá trị hiện tại là sử dụng for-in là",
+        "currentVal4": "giá trị hiện tại là sử dụng each-in là",
+        "nameStatement": "Xin chào, tên tôi là",
+        "heading": "Tựa đề",
+        "viewDetails": "Xem chi tiết"
+    },
+
+    "header":{
+        "brand": "Ứng dụng web của tôi",
+        "home": "Trang chủ",
+        "contact": "Liên hệ",
+        "contactManagement": "Quản lý liên lạc",
+        "login": "Đăng nhập",
+        "createAccount": "Tạo tài khoản",
+        "myAccount": "Tài khoản của tôi",
+        "logout": "Đăng xuất"
+    },
+
+    "signin":{
+        "heading": "Đăng nhập",
+        "password": "Mật khẩu",
+        "login": "Đăng nhập",
+        "forgotPassword": "Quên mật khẩu?"
+    },
+
+    "signup":{
+        "heading": "Đăng ký",
+        "password": "Mật khẩu",
+        "confirmPassword": "Xác nhận Mật khẩu",
+        "register": "Đăng ký"
+    },
+
+    "profile":{
+        "heading": "Thông tin tài khoản",
+        "name": "Tên",
+        "gender": "Giới tính",
+        "male": "Nam",
+        "female": "Nữ",
+        "other": "Khác",
+        "location": "Vị trí",
+        "updateProfile": "Cập nhật thông tin",
+        "changePassword": "Đổi mật khẩu",
+        "newPassword": "Mật khẩu mới",
+        "confirmPassword": "Xác nhận Mật khẩu",
+        "deleteAccount": "Xóa tài khoản",
+        "deleteMyAccount": "Xóa tài khoản của tôi",
+        "website": "Website",
+        "warningMessage": "Bạn có thể xóa tài khoản. Tuy nhiên, hành động này sẽ không thể hoàn tác."
+    },
+
+    "contactPage":{
+        "heading": "Đơn liên hệ",
+        "description": "Hay miêu tải vấn đề bạn muốn liên hệ",
+        "send": "Gửi"
+    },
+
+    "contactList":{
+        "heading": "Danh sách liên hệ",
+        "exportContacts": "Xuất danh sách liên hệ",
+        "importContacts": "Nhập danh sách liên hệ",
+        "deleteMultipleContacts": "Xóa nhiều liên hệ",
+        "filterContacts": "Lọc liên hệ",
+        "addContact": "Thêm liên hệ mới",
+        "fullName": "Họ tên",
+        "directManager": "Quản lý trực tiếp",
+        "dob": "Ngày sinh",
+        "gender": "Giới tính",
+        "startDate": "Ngày bắt đầu",
+        "action": "Hành động",
+
+        "confirmation": "Xác nhận",
+        "confirmationMessage": "Bạn có chắc muốn xóa liên hệ này?",
+        "confirmationMessageMultiple":"Bạn có chắc muốn xóa những liên hệ này?",
+        "cancel": "Hủy",
+        "delete": "Xóa",
+
+        "filter": "Lọc",
+        "instruction": "Hãy nhập vào những điều kiện sau đây",
+        "fullNameSearch": "Tìm bằng họ tên...",
+        "dobFrom": "Ngày sinh (từ ngày)",
+        "dobTo": "Ngày sinh (đến ngày)",
+        
+        "uploadHeading": "Tải danh sách liên hệ",
+        "selectFile": "Chọn File",
+        "upload": "Tải lên",
+
+        "none": "Không",
+
+        "male":"Nam",
+        "female":"Nữ",
+        "other": "Khác"
+    },
+
+    
+    "contactAdd":{
+        "heading1": "Liên hệ",
+        "heading2": "tạo",
+        "firstName": "Tên",
+        "middleName": "Tên đệm",
+        "lastName": "Họ",
+        "directManager": "Quản lý trực tiếp",
+        "none": "Không",
+        "dob": "Ngày sinh",
+        "gender": "Giới tính",
+        "male":"Nam",
+        "female":"Nữ",
+        "other":"Khác",
+        "startDate":"Ngày bắt đầu",
+        "create":"Tạo"
+    },
+
+    "contactEdit":{
+        "heading1": "Liên hệ",
+        "heading2": "cập nhật",
+        "firstName": "Tên",
+        "middleName": "Tên đệm",
+        "lastName": "Họ",
+        "directManager": "Quản lý trực tiếp",
+        "none": "Không",
+        "dob": "Ngày sinh",
+        "gender": "Giới tính",
+        "male":"Nam",
+        "female":"Nữ",
+        "other":"Khác",
+        "startDate":"Ngày bắt đầu",
+        "update":"Cập nhật"
+    },
+
+    "error404":{
+        "error": "Không tìm thấy trang"
+    },
+
+    "error403":{
+        "error": "Truy cập bị từ chối"
+    }
+
+}

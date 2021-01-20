@@ -1,0 +1,68 @@
+extends ../layout
+
+block content
+
+    .container
+        .row
+            .col-lg-12
+                h1
+                    a(href="/contact-management") #{t("contactAdd.heading1")}
+                    small.lead  / #{t("contactAdd.heading2")}
+                .bs-component.mt-5
+                    fieldset
+                        form(id='contace-create-form' method='POST')
+                            input(type='hidden' name='_csrf', value=_csrf)
+                            .form-group.row
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='firstName') #{t("contactAdd.firstName")}
+                                .col-md-7
+                                    input.form-control(type='text' name='firstName' id='firstName' placeholder=t("contactAdd.firstName"), autofocus, required)
+                            .form-group.row
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='firstName') #{t("contactAdd.middleName")}
+                                .col-md-7
+                                    input.form-control(type='text' name='middleName' id='middleName' placeholder=t("contactAdd.middleName"), autofocus, required)
+                            .form-group.row
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='lastName') #{t("contactAdd.lastName")}
+                                .col-md-7
+                                    input.form-control(type='text' name='lastName' id='lastName' placeholder=t("contactAdd.lastName"), autofocus, required)
+                            .form-group.row
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='direcManager') #{t("contactAdd.directManager")}
+                                .col-md-7
+                                    select.form-control(name="directManager")
+                                        option(value="") #{t("contactAdd.none")}
+                                        each contact in contactList
+                                            - id_val = contact.id
+                                            option(value=id_val) #{contact.firstName + " " + contact.middleName + " " + contact.lastName}
+                            .form-group.row 
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='doB') #{t("contactAdd.dob")}
+                                .col-md-7
+                                    .form-group
+                                        .input-group.date(data-provide='datepicker')
+                                            input.form-control(type='text' name="doB", autofocus, required)
+                                            .input-group-addon(style="width: 30px; padding: 5px")
+                                                i.fa.fa-calendar(aria-hidden='true' style="font-size:24px")
+
+                                script.
+                                    $(function () {
+                                        $('.datepicker').datepicker();
+                                    });
+                            .form-group.row
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='gender') #{t("contactAdd.gender")}
+                                .col-md-7
+                                    input.col-md-1(type="radio" name="gender", value="Male", checked="checked")
+                                    | #{t("contactAdd.male")}
+                                    input.col-md-1(type="radio" name="gender", value="Female")
+                                    | #{t("contactAdd.female")}
+                                    input.col-md-1(type="radio" name="gender", value="Other")
+                                    | #{t("contactAdd.other")}
+                            .form-group.row
+                                label.col-md-3.col-form-label.font-weight-bold.text-right(for='startDate') #{t("contactAdd.startDate")}
+                                .col-md-7
+                                    .form-group
+                                        .input-group.date(data-provide='datepicker')
+                                            input.form-control(type='text' name="startDate", autofocus, required)
+                                            .input-group-addon(style="width: 30px; padding: 5px")
+                                                i.fa.fa-calendar(aria-hidden='true' style="font-size:24px")
+                            .form-group.row.offset-sm-3.col-md-7.pl-2
+                                button.btn.btn-success(type='submit')
+                                    i.fas.fa-user-plus.fa-sm
+                                    | #{t("contactAdd.create")}

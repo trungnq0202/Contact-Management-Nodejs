@@ -1,0 +1,128 @@
+extends ../layout
+
+block content
+  .form-group.justify-content-between
+    h1.d-inline #{t("contactList.heading")}
+    a.btn.btn-primary.float-right.ml-4(href="/contact-management/export-contact" type='button' title='export-contact') #{t("contactList.exportContacts")}
+    a.btn.btn-primary.float-right.ml-4(data-toggle='modal' data-target='#upload-modal' type='button' title='import-contact') #{t("contactList.importContacts")}
+
+    a.btn.btn-danger.float-right.ml-4(type='button' style="display: none" id="delete-multiple-btn" data-toggle='modal' data-target='#delete-multiple-modal' title='delete-multiple-modal') #{t("contactList.deleteMultipleContacts")}
+    a.btn.btn-primary.float-right.ml-4(type='button' data-toggle='modal' data-target='#filter-modal' title='filter') #{t("contactList.filterContacts")}
+    a.btn.btn-primary.float-right(href="/contact-management/add" target='_blank' type='button') #{t("contactList.addContact")}
+
+  table.table.table-hover(style='width:100%')
+    thead
+      tr.table-secondary
+        th 
+        th #{t("contactList.fullName")}
+        th #{t("contactList.directManager")}
+        th #{t("contactList.dob")}
+        th #{t("contactList.gender")}
+        th #{t("contactList.startDate")}
+        th #{t("contactList.action")}
+    tbody#search-table
+      for contact in contactList
+        tr(id=contact._id)
+          td
+            if (contact.userId.toString() === tempUserId.toString())
+              input.select(type='checkbox' onclick="checkBoxToggle()"  class='checkbox' id=contact._id)
+          td #{contact.firstName + " " + contact.middleName + " " + contact.lastName} 
+          //- td #{contact.middleName}
+          //- td #{contact.lastName}
+          if contact.directManager
+            td #{contact.directManager.firstName + " " + contact.directManager.middleName + " " + contact.directManager.lastName}
+          else 
+            td #{t("contactList.none")}
+          td #{moment(contact.dOB).format("MM/DD/YYYY")}
+          //- td #{contact.gender}
+          case contact.gender
+            when "Male"
+              td #{t("contactList.male")}
+            when "Female"
+              td #{t("contactList.female")}
+            default
+              td #{t("contactList.other")}
+
+          td #{moment(contact.startDate).format("MM/DD/YYYY")}
+          if (contact.userId.toString() === tempUserId.toString())
+            td
+              - editUrl = '/contact-management/edit/' + contact._id
+              a.btn.btn-sm.btn-info(href=editUrl target='_blank' title='Edit')
+                i.fa.fa-list(aria-hidden='true')
+              button.btn.btn-sm.btn-danger(onclick='deleteContact(' + '"' + contact._id + '"' + ')' type='button' data-toggle='modal' data-target='#delete-modal' title='Delete')
+                i.fa.fa-trash(aria-hidden='true')
+
+  #delete-modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          h5.modal-title #{t("contactList.confirmation")}
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body
+          p
+            | #{t("contactList.confirmationMessage")} 
+            strong(style="display: none")#delete-item 10
+        .modal-footer
+          input(type='hidden' name='_csrf', value=_csrf)
+          button.btn.btn-link(type='button' data-dismiss='modal') #{t("contactList.cancel")} 
+          button#delete-btn.btn.btn-danger(type='button') #{t("contactList.delete")} 
+
+  #filter-modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true')
+    form(id='contace-create-form' method='POST')
+      input(type='hidden' name='_csrf', value=_csrf)
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5.modal-title #{t("contactList.filter")} 
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            p
+            | #{t("contactList.instruction")}
+            .form-group
+              .input-group.mb-3
+                .input-group-prepend
+                  span.input-group-text #{t("contactList.filter")}:
+                input#search-text-fullname.form-control(name="fullName", type='text' aria-label='' placeholder=t("contactList.fullNameSearch"))
+              .input-group.mb-3
+                .input-group-prepend
+                  span.input-group-text #{t("contactList.filter")}:
+                input#search-DOB-fromdate.form-control.input-group.date(placeholder=t("contactList.dobFrom") data-provide='datepicker' type='text' name="dobFromDate", autofocus)
+              .input-group.mb-3
+                .input-group-prepend
+                  span.input-group-text #{t("contactList.filter")}:
+                input#search-DOB-todate.form-control.input-group.date(placeholder=t("contactList.dobTo") data-provide='datepicker' type='text' name="dobToDate", autofocus)
+          .modal-footer
+            button.btn.btn-link(type='button' data-dismiss='modal') #{t("contactList.cancel")} 
+            button#delete-btn.btn.btn-success(type='submit') #{t("contactList.filter")}
+
+  #delete-multiple-modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          h5.modal-title #{t("contactList.confirmation")} 
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body
+          p
+            | #{t("contactList.confirmationMessageMultiple")} 
+        .modal-footer
+          input(type='hidden' name='_csrf', value=_csrf)
+          button.btn.btn-link(type='button' data-dismiss='modal')  #{t("contactList.cancel")} 
+          button#delete-multiple-inner-btn.btn.btn-danger(type='button') #{t("contactList.delete")} 
+  
+  #upload-modal.modal.fade(role='dialog')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h4.float-left.modal-title #{t("contactList.uploadHeading")} 
+        .modal-body
+          form(action='/contact-management/import-contact', method='POST' enctype="multipart/form-data" )
+            input.form-control(type='hidden' name='_csrf', value=_csrf)
+            | #{t("contactList.selectFile")}  : 
+            input#file-upload-input.form-control(type='file', name='csvFile', required)
+            br
+            button#upload-file-btn.btn.btn-success(type="submit") #{t("contactList.upload")}
+            button.btn.btn-link(type='button' data-dismiss='modal') #{t("contactList.cancel")}
+          #preview

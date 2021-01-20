@@ -1,0 +1,105 @@
+extends layout
+
+block content
+  
+  h1 #{t("home.mainTitle")}
+  p #{t("home.intro")}
+  //- Pug.js allow writing inline JavaScript code.
+  //- Unbuffered JavaScript code does not output any results.
+  //- Unbuffered code must start with `-` hyphen.
+  - var fieldName = "username"
+  - var required = false
+  input(type="text", name=fieldName, required=required)
+
+  //- Pug.js also support block Unbuffered code.
+  -
+      // JavaScript comment inside the block
+      var classes = [
+          "general",
+          "link",
+          "active"
+      ];
+  a(href="some-link", class=classes)
+      
+  //- Buffered JavaScript code output results.
+  //- Buffered code starts with `=`
+    'deleteContact(' + '"' + contact._id + '"' + ')'
+  p= '' + t('home.greetings') + '<b>Pug.js!</b>'
+
+  //- Buffered code is escaped by default.
+  //- Like attributes, you can use `!=` syntax to prevent that.
+  p!= '' + t('home.greetings') + '<b>Pug.js!</b>'
+
+  //- Pug.js provided built in conditional `if-else` syntax.
+  //- Paranthese are optional.
+  - var gender = "MALE"
+  if(gender == "MALE")
+      p #{t("home.male_statement")}
+  else if gender == "FEMALE"
+      p #{t("home.female_statement")}
+  else
+      p #{t("home.special_statement")}
+
+  //- Pug also provides `unless` conditional syntax which works like a negated if.
+  //- This will work only when condition is true.
+  - var loggedin = false
+  unless loggedin
+      p
+          a.link(href="some-link") #{t("home.someLink")}.
+
+  //- For loops, Pug has for, `for in`, `each in` and `while` loop.
+  //- While, in case of `for` loop, `-` hyphen is necessary.
+  ul
+      - for (var i = 0; i < 3; i++)
+          li= t('home.currentVal1') + ` ${i}`
+  - var i = 0
+  ul
+      while i < 3
+          li= t('home.currentVal2') + ` ${i++}`
+
+  - var list = [0,1,2]
+  ul
+      for i in list
+          li= t('home.currentVal3') + ` ${i}`
+
+  ul
+      each i in list
+          li= t('home.currentVal4') + ` ${i}`
+
+  //- Pug does not a `switch` statement but support similar `case-when` statement.
+  //- You can also write when expression in single line or block.
+  - var gender = "MALE"
+  case gender
+      when "MALE"
+          p #{t("home.male_statement")}
+      when "FEMALE": p #{t("home.female_statement")}
+      default
+          p #{t("home.special_statement")}
+
+
+  //- Interpolation in Pug is very easy.
+  //- Like ES6 uses `${variable}` syntax, Pug uses `#{variable}` syntax.
+  - var name="John Doe"
+  p #{t("home.nameStatement")} #{name}.
+
+  //- Any code inside curly braces of `#{}` is valid javascript expression
+  - var name="John <b>Doe</b>"
+  p #{t("home.nameStatement")} #{name.toLowerCase()}.
+
+  //- By default, value inside curely brace is escaped.
+  //- To prevent that, use `!` operator.
+  - var name="John <b>Doe</b>"
+  p #{t("home.nameStatement")} !{name.toLowerCase()}.
+  hr
+  .row
+    .col-md-6
+      h2 #{t("home.heading")}
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-raised(href='#', role='button') #{t("home.viewDetails")} »
+    .col-md-6
+      h2 #{t("home.heading")}
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-raised(href='#', role='button') #{t("home.viewDetails")} »
+    
